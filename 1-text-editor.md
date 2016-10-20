@@ -19,7 +19,7 @@ country at the start of a line, in case there are colons in other parts of the t
 at the same time, put them in parentheses to capture the matching text as a group, and use the character for the first group
 captured `$1` in our replace expression.
 
-Enter the following into the __Find What__ and __Replace With__ fields:
+Enter the following into the __Find What__ and __Replace With__ fields and click the lower right button __Replace All__:
 
 Find What: (make sure you put a space after the colon)
 ~~~ {.input}
