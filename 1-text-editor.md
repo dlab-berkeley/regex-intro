@@ -1,4 +1,4 @@
-## 1. Convert Text to CSV File (Sublime Text Editor)
+## Putting Regular Expressions into Practice: Sublime Text Editor
 
 To put regular expressions into practice in an environment in which you might use them, lets turn to a popular text editor,
 Sublime. Open Sublime from the Applications on your laptop, then from the File menu, Open the file `example_data_leaders.txt`
@@ -82,4 +82,33 @@ $1,"$2"
 ~~~
 
 And there you have it, the file now looks like a .csv file! We can open this in Excel or read it into a programming language
-to manipulate the rows and cells, which we'll do next.
+to manipulate the rows and cells. For those familiar with Python or R, we'll demonstrate that next. For others who wish
+to keep practicing regular expressions in Sublime, continue on to the following challenges on your own.
+
+## Exercises
+
+#### Challenge 1
+Find and print out all academic positions that appear in leaders' prior experience (e.g. professor, dean).
+
+#### Challenge 2
+
+After finding the academic positions, instead of replacing them with a common term (which means we loose more specific
+information), try adding a new variable with a 1 if there is an academic position in the leader's list of prior
+experiences, and 0 otherwise.
+(In the csv file format, this means you'll need to add a comma followed by a 0 or 1 at the end of each line.
+HINT: Add `,0` to the end of each line, then go through and change the `0` to a `1` if there's an
+academic position in the line. Be sure to capture and keep the rest of the text on the line as-is.)
+
+#### Challenge 3
+Change the dates to a different format. Things you might want to do:
+* You might only want two numbers for the year, to match with other data you have
+(e.g. from 1/15/2000 to 1/15/00)
+* You might want to add a zero in front of a single-digit month or day, to make the
+date a standard length (e.g. from 1/15/2000 to 01/15/2000)
+* When working with information for or from foreign countries, you might want to swap
+the month and day numbers (e.g. from mm/dd/yy to dd/mm/yy).
+
+#### Challenge 4
+Try changing the format of the whole file from a .csv back to a .txt file that's easier for people to read, with
+a block of lines for each reader (instead of just one line) separated by a blank line, and a date range separated by a hyphen.
+
