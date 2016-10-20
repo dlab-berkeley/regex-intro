@@ -8,7 +8,7 @@ let's read in the leader data file we just converted from .txt to .csv:
 >>> import re
 >>> import csv
 
->>> with open('/Users/natalieahn/Documents/D-Lab/example_data_leaders.csv', 'rU') as f:
+>>> with open('example_data_leaders.csv', 'rU') as f:
 ...     reader = csv.reader(f)
 ...     data = [row for row in reader]
 ...
