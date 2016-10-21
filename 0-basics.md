@@ -20,14 +20,14 @@ to find sequences in the headlines below.
 ~~~ {.input}
 New York Times											October 19, 2016
 Retaking Mosul From ISIS May Pale to What Comes Next
-By TIM ARANGO and RICK GLADSTONE
+By TIM ARANGO and RICK GLADSTONE  11:52 ET
 If the recaptures of Ramadi, Tikrit and Falluja are a guide,
 Iraqi officials will confront devastation and unexploded bombs
 once Mosul is reclaimed.
 
 New York Times											October 18, 2016
 Short-Term Cease-Fire in Yemen Appears Likely
-By BEN HUBBARD
+By BEN HUBBARD  10:05 ET
 The rebels known as the Houthis said they would abide by the
 cease-fire if the Saudi military coalition halted attacks and
 lifted a blockade.
@@ -102,8 +102,6 @@ Note that the uppercase version is usually the complement of the lowercase versi
 \S        Any non-whitespace character
 \b        Matches the beginning or end of a word (does not consume a character)
 \B        Matches only when the position is not the beginning or end of a word (does not consume a character)
-\A        Matches only at the start of a string (like ^)
-\Z        Matches only at the end of a string (like $)
 ~~~
 
 ## 4. Groups and Logical OR
