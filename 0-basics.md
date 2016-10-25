@@ -81,9 +81,10 @@ The set will match only one character contained within that set, so to find sequ
 the same set, use a quantifier like `+` or a specific number or number range `{n,m}`.
 
 ~~~ {.input}
-[0-9]        all numeric characters 
-[a-z]        all lowercase alphabetic characters 
-[A-Z]        all uppercase alphabetic characters 
+[0-9]        any numeric character
+[a-z]        any lowercase alphabetic character
+[A-Z]        any uppercase alphabetic character
+[aeiou]      any vowel (i.e. any character within the brackets)
 [0-9a-z]     to combine sets, list them one after another 
 [^...]       exclude specific characters
 ~~~
@@ -113,8 +114,8 @@ The pipe character `|` serves as a logical OR operator, to match the expression 
 can be used to indicate which elements of the expression are being operated on by the `|`.
 
 ~~~ {.input}
-|        Logical OR opeator
-(...)    Matches whatever regular expression is inside the parentheses, and notes the start and end of a group
-(a|b)    Matches the character a or the character b
+|            Logical OR opeator
+(...)        Matches whatever regular expression is inside the parentheses, and notes the start and end of a group
+(this|that)  Matches the expression "this" or the expression "that"
 ~~~
 
