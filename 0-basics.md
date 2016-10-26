@@ -13,7 +13,7 @@ already familiar with one of those languages.
 To get started:
 
 1. Go to this site: [http://regexr.com](http://regexr.com).
-2. Copy and paste the New York Times leads below into the __Text__ window on the website.
+2. Copy and paste the New York Times leads from the file `nyt_leads.txt` into the __Text__ window on the website.
 3. Delete what you see in the __Expression__ field. This is where we'll insert our own regular expressions
 to find sequences in the headlines below.
 
