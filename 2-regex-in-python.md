@@ -22,13 +22,11 @@ Let's say that we want to find all of our leaders' prior experience that involve
 a simple for loop to iterate through the rows in our data, look at the cell for prior experience, and print it out if it matches
 a regular expression for "minister". (To keep this very simple, we're just looking at the last cell in each row.)
 
-Recall that regular expressions are case sensitive, so we can either convert the input string to lowercase, or include both
-uppercase and lowercase versions in the regular expression (e.g. `[Mm]inister`). Let's just convert everything to lowercase,
-so we don't miss some possible capitalizations (like all caps).
+Recall that regular expressions are case sensitive, so let's search for both capital and lowercase ministers with `[Mm]inister`.
 
 ~~~ {.input}
 >>> for row in data:
-...     if re.match('minister', row[-1].lower()): print(row[-1])
+...     if re.match('[Mm]inister', row[-1]): print(row[-1])
 ...
 ~~~
 ~~~ {.output}
@@ -40,7 +38,7 @@ the given string. To find a sequence anywhere within the given string, we can us
 
 ~~~ {.input}
 >>> for row in data:
-...     if re.search('minister', row[-1].lower()): print(row[-1])
+...     if re.search('[Mm]inister', row[-1]): print(row[-1])
 ...
 ~~~
 ~~~ {.output}
@@ -71,7 +69,7 @@ expression. But we'll just call `.group()` with no arguments, so it returns the 
 
 ~~~ {.input}
 >>> for row in data:
-...     match = re.search('[^,]*minister[^,]*', row[-1].lower())
+...     match = re.search('[^,]*[Mm]inister[^,]*', row[-1])
 ...     if match:
 ...         print(match.group())
 ...
@@ -93,7 +91,7 @@ strings that represent the sequences from the original string matching the regul
 
 ~~~ {.input}
 >>> for row in data:
-...     match = re.findall('[^,]*minister[^,]*', row[-1].lower())
+...     match = re.findall('[^,]*[Mm]inister[^,]*', row[-1])
 ...     if match:
 ...         print(match)
 ...
@@ -116,7 +114,7 @@ Let's use the same regular expression from above, but now we'll use `sub()` and 
 
 ~~~ {.input}
 >>> for row in data:
-...     re.sub('[^,]*minister[^,]*', 'cabinet minister', row[-1].lower())
+...     re.sub('[^,]*[Mm]inister[^,]*', 'cabinet minister', row[-1])
 ...
 ~~~
 ~~~ {.output}
@@ -147,7 +145,7 @@ original data row as well, but we can print them out to make sure they look righ
 
 ~~~ {.input}
 >>> for row in data:
-...     row[-1] = re.sub('[^,]*minister[^,]*', 'cabinet minister', row[-1].lower())
+...     row[-1] = re.sub('[^,]*[Mm]inister[^,]*', 'cabinet minister', row[-1])
 ...     row[-1] = re.sub('(,cabinet minister)+', ', cabinet minister', row[-1])
 ...     print(row[-1])
 ...
