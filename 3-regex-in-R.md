@@ -16,12 +16,10 @@ Let's say that we want to find all of our leaders' prior experience that involve
 we'll just assume the prior experience is in the last column in our data frame, and we'll pass that column as a vector into grep,
 to look for the values in that column that match a regular expression for "minister".
 
-Recall that regular expressions are case sensitive, so we can either convert the input string to lowercase, or include both
-uppercase and lowercase versions in the regular expression (e.g. `[Mm]inister`). Let's just convert everything to lowercase,
-so we don't miss some possible capitalizations (like all caps).
+Recall that regular expressions are case sensitive, so let's search for both capitalized and lowercase ministers with `[Mm]inister`.
 
 ~~~ {.input}
-> grep('minister', tolower(data[,ncol(data)]), value=TRUE)
+> grep('[Mm]inister', data[,ncol(data)], value=TRUE)
 ~~~
 ~~~ {.output}
 [1] "lawyer, legislator, party leader, minister of education, minister of justice"      
@@ -41,7 +39,7 @@ in each string in the input vector where the regular expression found a match. W
 the function `regmatches()`, along with the original vector of strings again, to get the exact sequences of text that matched.
 
 ~~~ {.input}
-> matches <- regexpr('[^,]*minister[^,]*', tolower(data[,ncol(data)]))
+> matches <- regexpr('[^,]*[Mm]inister[^,]*', data[,ncol(data)])
 > regmatches(data[,ncol(data)], matches)
 ~~~
 ~~~ {.output}
@@ -55,7 +53,7 @@ instead of a single vector of output, we're now going to get a list of vectors (
 assign this to a variable and then use `unlist` so we just end up with a vector of all of the positions that matched.
 
 ~~~ {.input}
-> matches <- gregexpr('[^,]*minister[^,]*', tolower(data[,ncol(data)]))
+> matches <- gregexpr('[^,]*[Mm]inister[^,]*', data[,ncol(data)])
 > positions <- regmatches(data[,ncol(data)], matches)
 > unlist(positions)
 ~~~
@@ -73,7 +71,7 @@ want to find and replace.
 Let's use the same regular expression from above, but now we'll use `gsub()` and add a replacement string `cabinet minister`.
 
 ~~~ {.input}
-> gsub('[^,]*minister[^,]*', 'cabinet minister', tolower(data[,ncol(data)]))
+> gsub('[^,]*[Mm]inister[^,]*', 'cabinet minister', data[,ncol(data)])
 ~~~
 ~~~ {.output}
  [1] "economist, business executive,cabinet minister,cabinet minister,cabinet minister" 
@@ -102,7 +100,7 @@ came after a comma, so let's add a space whenever we see an instance of "cabinet
 original data frame as well, then print them out to make sure they look right.
 
 ~~~ {.input}
-> data[,ncol(data)] <- gsub('[^,]*minister[^,]*', 'cabinet minister', tolower(data[,ncol(data)]))
+> data[,ncol(data)] <- gsub('[^,]*[Mm]inister[^,]*', 'cabinet minister', data[,ncol(data)])
 > data[,ncol(data)] <- gsub('(,cabinet minister)+', ', cabinet minister', data[,ncol(data)])
 > data[,ncol(data)]
 ~~~
