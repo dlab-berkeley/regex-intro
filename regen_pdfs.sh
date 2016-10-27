@@ -12,4 +12,9 @@ do
   mv $fname pdfs/
 done
 
+for fname in ./answers/*.md
+do
+  markdown-pdf $fname
+done
+
 echo "pdf files successfully regenerated"
